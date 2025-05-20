@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+@theme {
+  --color-primary: #b5d5ff;
+  --color-dark-black: #171c24;
+  --color-light-black: #2f3541;
+  --color-off-white: #e7e7e7;
+  --color-box-shadow-dark: #5f656e;
+}
+
+/* Home - Skils Tabs */
+div[role="tablist"] button[role="tab"] {
+  background-color: var(--color-box-shadow-dark);
+  color: var(--color-off-white);
+  padding: 10px;
+  margin-right: 4px;
+  border-radius: 10px;
+}
+div[role="tablist"] button[role="tab"]:hover {
+  cursor: pointer;
+}
+div[role="tablist"] button[role="tab"][aria-selected="true"] {
+  background-color: var(--color-light-black);
+  color: var(--color-off-white);
+  box-shadow: 2px 2px 2px var(--color-box-shadow-dark);
+}
+
+/* Home - Portfolio Cards */
+.project-card > div {
+  padding: 0px;
+  gap: 10px;
+}
+.project-card:last-child {
+  display: none;
+}
+@media (min-width: 768px) {
+  .project-card:last-child {
+    display: block;
+  }
+}
+
+/* Home - Blog Cards*/
+.blog-card > div {
+  padding: 10px;
+  gap: 10px;
+}
+
+/* Home - Contact */
+.dark-input input,
+.dark-textarea {
+  background-color: var(--color-light-black);
+  color: var(--color-off-white);
+  margin-top: -8px;
+  border: 2px solid var(--color-dark-black);
+}
+.error-input input,
+.error-textarea {
+  background-color: var(--color-off-white);
+  color: #8d0c0c;
+  margin-top: -8px;
+  border: 2px solid #8d0c0c;
+}
+/* .dark-input input:focus {
+  border: 2px solid var(--color-dark-black);
+} */
+.dark-input svg {
+  color: var(--color-off-white);
+  margin-top: -8px;
+}
+.error-input svg {
+  color: #8d0c0c;
+  margin-top: -8px;
+}
