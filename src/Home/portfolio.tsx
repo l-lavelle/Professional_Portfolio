@@ -1,4 +1,5 @@
 import { Card } from "flowbite-react";
+import HeaderLink from "./homeComponents/headerLink";
 
 const HomePortfolio = () => {
   const featuredPortfolio = [
@@ -25,9 +26,11 @@ const HomePortfolio = () => {
   return (
     <section className="w-full xl:max-w-6xl">
       <div className="mx-3 xl:mx-auto my-6">
-        <h3 className="text-black text-2xl font-medium mb-1 justify-self-start">
-          Featured Portfolio
-        </h3>
+        <HeaderLink
+          extraClasses={"text-black justify-self-start"}
+          link={"/Portfolio"}
+          title={"Featured Portfolio"}
+        />
         <div className="flex my-4 space-x-3 space-y-3 items-stretch">
           {featuredPortfolio.map(({ imageSrc, imageAlt, title, text }) => (
             <HomePortfolioCard

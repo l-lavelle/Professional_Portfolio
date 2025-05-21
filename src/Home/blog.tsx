@@ -1,5 +1,6 @@
 import { Card } from "flowbite-react";
 import CustomBadges from "./customBadges";
+import HeaderLink from "./homeComponents/headerLink";
 
 const HomeBlog = () => {
   const blogs = [
@@ -69,9 +70,13 @@ const HomeBlog = () => {
       <div className="flex flex-col justify-center items-center">
         <div className="w-full xl:w-6xl">
           <div className="mx-3 xl:mx-auto mt-6 mb-10">
-            <h3 className="text-off-white text-2xl font-medium mb-1 justify-self-center sm:justify-self-start">
-              Featured Blog
-            </h3>
+            <HeaderLink
+              extraClasses={
+                "text-off-white justify-self-center sm:justify-self-start"
+              }
+              link={"/Blog"}
+              title={"Featured Blog"}
+            />
             <div className="flex flex-col sm:flex-row mt-2 space-y-4 sm:space-y-0 sm:space-x-4 items-center xl:w-6xl">
               {blogs.map(
                 ({ title, description, image, imageAlt, badgeArray }) => (

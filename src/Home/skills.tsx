@@ -2,6 +2,7 @@ import { TabItem, Tabs } from "flowbite-react";
 import { CodeBracketIcon } from "@heroicons/react/24/outline";
 import LinkedinLogo from "/LinkedIn_logo.png";
 import CustomBadges from "./customBadges";
+import HeaderLink from "./homeComponents/headerLink";
 
 const skillTabs = [
   {
@@ -51,7 +52,11 @@ const SkillsSection = () => (
     <div className="absolute inset-0 bg-primary z-[-1] min-w-full -bottom-[150px] translate-y-[-150px]" />
     <div className="flex flex-col lg:flex-row max-w-6xl my-8 px-3 mx-auto space-y-1 lg:space-x-10">
       <div className="lg:w-1/2">
-        <h3 className="text-black text-2xl font-medium mb-1">In a Nutshell</h3>
+        <HeaderLink
+          extraClasses={"text-black"}
+          link={"/About"}
+          title={"In a Nutshell"}
+        />
         <p>
           Resume summary: Lorem Ipsum has been the industry's standard dummy
           text ever since the 1500s, when an unknown printer took a galley of

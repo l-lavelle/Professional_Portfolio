@@ -7,8 +7,8 @@ const CustomNavItems = ({ linkClass }: { linkClass: string }) => {
   const navigation = [
     { name: "About", href: "/About" },
     { name: "Portfolio", href: "/Portfolio" },
-    { name: "Blog", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Blog", href: "/Blog" },
+    { name: "Contact", href: "/Contact" },
   ];
 
   function classNames(...classes: string[]) {
@@ -16,9 +16,7 @@ const CustomNavItems = ({ linkClass }: { linkClass: string }) => {
   }
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      setActive("");
-    }
+    setActive(location.pathname);
   }, [location]);
 
   return (
@@ -29,12 +27,11 @@ const CustomNavItems = ({ linkClass }: { linkClass: string }) => {
           to={href}
           aria-current={name === active ? "page" : undefined}
           className={classNames(
-            name === active
+            href === active
               ? "bg-light-black text-white"
               : "text-dark-black hover:bg-primary",
             linkClass
           )}
-          onClick={() => setActive(name)}
         >
           {name}
         </Link>

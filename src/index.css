@@ -62,9 +62,6 @@ div[role="tablist"] button[role="tab"][aria-selected="true"] {
   margin-top: -8px;
   border: 2px solid #8d0c0c;
 }
-/* .dark-input input:focus {
-  border: 2px solid var(--color-dark-black);
-} */
 .dark-input svg {
   color: var(--color-off-white);
   margin-top: -8px;
@@ -72,4 +69,40 @@ div[role="tablist"] button[role="tab"][aria-selected="true"] {
 .error-input svg {
   color: #8d0c0c;
   margin-top: -8px;
+}
+
+/* Link Hover Effect */
+.link-hover:before,
+.link-hover:after {
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
+}
+
+.link-hover:before {
+  margin-right: 5px;
+  content: "[";
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.link-hover:after {
+  margin-left: 5px;
+  content: "]";
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+
+.link-hover:hover:before,
+.link-hover:hover:after,
+.link-hover:focus:before,
+.link-hover:focus:after {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
 }

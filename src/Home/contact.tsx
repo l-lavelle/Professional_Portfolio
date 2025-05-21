@@ -3,6 +3,7 @@ import { Button, Label, Textarea, TextInput } from "flowbite-react";
 import { EnvelopeIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useRef, useState, type FC, type RefObject } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import HeaderLink from "./homeComponents/headerLink";
 
 const HomeContact = () => {
   const inputRefs = useRef<{
@@ -67,9 +68,11 @@ const HomeContact = () => {
             />
           </div>
           <div className="w-full sm:w-1/2 flex flex-col space-y-3 px-5 sm:px-0 sm:mx-2">
-            <h3 className="text-light-black text-2xl font-medium mb-1 justify-self-center">
-              Get In Touch
-            </h3>
+            <HeaderLink
+              extraClasses={"text-light-black justify-self-center"}
+              link={"/Contact"}
+              title={"Get In Touch"}
+            />
             <CustomInput
               title={"Name"}
               error={error.name}
