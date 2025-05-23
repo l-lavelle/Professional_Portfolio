@@ -58,7 +58,7 @@ const HomePortfolioCard = ({
   title: string;
   text: string;
 }) => (
-  <Card className="project-card max-w-sm bg-light-black border border-2 border-light-black shadow-[2px_3px_4px_var(--color-box-shadow-dark)] flex-1 h-full">
+  <Card className="project-card max-w-sm bg-light-black border border-2 border-light-black shadow-[2px_3px_4px_var(--color-box-shadow-dark)] flex-1 h-full cursor-pointer">
     <img
       className="max-h-33 object-cover rounded-t-lg"
       src={imageSrc}

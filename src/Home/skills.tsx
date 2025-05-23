@@ -43,6 +43,18 @@ const skillTabs = [
         badgeTitle: "cy",
         badgeImage: LinkedinLogo,
       },
+      {
+        badgeTitle: "cy",
+        badgeImage: LinkedinLogo,
+      },
+      {
+        badgeTitle: "cy",
+        badgeImage: LinkedinLogo,
+      },
+      {
+        badgeTitle: "cy",
+        badgeImage: LinkedinLogo,
+      },
     ],
   },
 ];
@@ -65,11 +77,12 @@ const SkillsSection = () => (
           typesetting, remaining essentially unchanged.
         </p>
       </div>
-      <div className="mt-5 lg:mt-0 lg:w-1/2 lg:min-h-full">
+      <div className="relative mt-5 lg:mt-0 lg:w-1/2 lg:min-h-full w-full">
+        <div className="absolute -z-1 top-5 bg-light-black rounded-sm w-full inset-x-0 bottom-0" />
         <Tabs aria-label="skills tabs">
           {skillTabs.map(({ title, icon, skillsArray }) => (
             <TabItem active title={title} icon={icon}>
-              <div className="-mt-8 p-3 pt-6 pb-4 bg-light-black text-off-white rounded-sm lg:h-full">
+              <div className="px-3 -mt-2">
                 <CustomBadges badgeArray={skillsArray} />
               </div>
             </TabItem>

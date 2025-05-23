@@ -112,7 +112,7 @@ const BlogCard = ({
   image: string;
   imageAlt: string;
 }) => (
-  <Card className="blog-card max-w-sm bg-primary p-1 shadow-[2px_3px_4px_1px_var(--color-off-white)]">
+  <Card className="blog-card max-w-sm bg-primary p-1 shadow-[2px_3px_4px_1px_var(--color-off-white)] cursor-pointer">
     <div className="flex flex-col p-0 space-y-2">
       <div>
         <h5 className="text-2xl font-bold tracking-tight text-light-black dark:text-white">
