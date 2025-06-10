@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const CustomNavItems = ({ linkClass }: { linkClass: string }) => {
+const CustomNavItems = ({
+  linkClass,
+  onClick,
+}: {
+  linkClass: string;
+  onClick?: Dispatch<SetStateAction<boolean>> | undefined;
+}) => {
   const location = useLocation();
   const [active, setActive] = useState<string>("");
   const navigation = [
@@ -29,9 +35,12 @@ const CustomNavItems = ({ linkClass }: { linkClass: string }) => {
           className={classNames(
             href === active
               ? "bg-light-black text-white"
-              : "text-dark-black hover:bg-primary",
+              : "text-off-white hover:bg-light-black",
             linkClass
           )}
+          onClick={() => {
+            if (onClick) onClick(true);
+          }}
         >
           {name}
         </Link>
