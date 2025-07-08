@@ -4,14 +4,15 @@ import LinkedinLogo from "/LinkedIn_logo.png";
 
 const Header = () => {
   return (
-    <section className="flex flex-col overflow-hidden">
-      <div className="flex items-center justify-center">
-        <Card className="max-w-6xl mx-2 bg-dark-black">
+    <section className="flex flex-col w-full relative">
+      <div className="bg-dark-black w-full h-50 absolute z-[-1]"></div>
+      <div className="flex items-center justify-center mt-4">
+        <Card className="max-w-6xl mx-2 bg-dark-black border-light-black border-2">
           <div className="flex flex-col sm:flex-row sm:space-y-0 sm:space-x-4 w-full">
             <figure className="bg-red-300 w-50 hidden sm:block sm:max-w-100 sm:flex-1">
               <Card></Card>
             </figure>
-            <Card className="bg-light-black border-primary w-full flex-1 space-y-0">
+            <Card className="bg-light-black border-none w-full flex-1 space-y-0">
               <div className="flex flex-row">
                 <figure className="bg-red-150 w-25 sm:hidden mr-2">
                   <Card></Card>

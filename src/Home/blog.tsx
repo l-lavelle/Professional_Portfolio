@@ -1,8 +1,15 @@
 import { Card } from "flowbite-react";
 import CustomBadges from "./customBadges";
 import HeaderLink from "./homeComponents/headerLink";
+import { useDraggable } from "react-use-draggable-scroll";
+import { useRef, type RefObject } from "react";
 
 const HomeBlog = () => {
+  const ref = useRef<HTMLDivElement>(null) as RefObject<HTMLInputElement>;
+  const { events } = useDraggable(ref, {
+    safeDisplacement: 11,
+  });
+
   const blogs = [
     {
       title: "Noteworthy technology",
@@ -77,18 +84,24 @@ const HomeBlog = () => {
               link={"/Blog"}
               title={"Featured Blog"}
             />
-            <div className="flex flex-col sm:flex-row mt-2 space-y-4 sm:space-y-0 sm:space-x-4 items-center xl:w-6xl">
-              {blogs.map(
-                ({ title, description, image, imageAlt, badgeArray }) => (
-                  <BlogCard
-                    title={title}
-                    description={description}
-                    badgeArray={badgeArray}
-                    image={image}
-                    imageAlt={imageAlt}
-                  />
-                )
-              )}
+            <div className="blog-container">
+              <div
+                className="blog-track sm:flex sm:flex-row sm:mt-2 sm:space-x-4 sm:items-center xl:w-6xl"
+                ref={ref}
+                {...events}
+              >
+                {blogs.map(
+                  ({ title, description, image, imageAlt, badgeArray }) => (
+                    <BlogCard
+                      title={title}
+                      description={description}
+                      badgeArray={badgeArray}
+                      image={image}
+                      imageAlt={imageAlt}
+                    />
+                  )
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -112,7 +125,7 @@ const BlogCard = ({
   image: string;
   imageAlt: string;
 }) => (
-  <Card className="blog-card max-w-sm bg-primary p-1 shadow-[2px_3px_4px_1px_var(--color-off-white)] cursor-pointer">
+  <Card className="blog-card xs:w-[170px] sm:max-w-sm bg-primary p-1 shadow-[2px_3px_4px_1px_var(--color-dark-black)] cursor-pointer">
     <div className="flex flex-col p-0 space-y-2">
       <div>
         <h5 className="text-2xl font-bold tracking-tight text-light-black dark:text-white">

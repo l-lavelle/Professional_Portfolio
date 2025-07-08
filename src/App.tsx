@@ -1,13 +1,16 @@
 import CustomNavBar from "./Navbar/index";
 import { Outlet } from "react-router-dom";
+import { QueryProvider } from "./Blog/context";
 
 function App() {
   return (
     <>
       <CustomNavBar />
-      <main>
-        <Outlet />
-      </main>
+      <QueryProvider>
+        <main>
+          <Outlet />
+        </main>
+      </QueryProvider>
     </>
   );
 }

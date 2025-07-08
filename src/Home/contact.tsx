@@ -58,7 +58,7 @@ const HomeContact = () => {
   };
 
   return (
-    <section className="w-full bg-primary py-8 flex justify-center items-center">
+    <section className="w-full bg-dark-black py-8 flex justify-center items-center">
       <div className="bg-primary rounded-lg px-3 py-5 w-full md:max-w-3xl xl:max-w-4xl mx-3 md:mx-0 shadow-[2px_3px_4px_3px_var(--color-box-shadow-dark)]">
         <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-5">
           <div className="sm:w-1/2 flex flex-col ">

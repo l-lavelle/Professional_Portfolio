@@ -5,16 +5,13 @@ import {
 } from "@heroicons/react/24/outline";
 import CustomBadges from "../Home/customBadges";
 import LinkedinLogo from "/LinkedIn_logo.png";
-
-type PortfolioIndex = {
-  first: number;
-  middle: number;
-  last: number;
-};
+import type { PortfolioIndex } from "../types/custom";
 
 const Portfolio = () => {
   // TODO: If click from home page middle show be the one clicked on
   // TODO: on hover scroll through webpage - get bigger
+  // TODO: Clean and break up
+  // TODO: box shadows and dark bottom of page
 
   const portfolioOptions = [
     { img: "img1", title: "title1" },
@@ -124,18 +121,25 @@ const Portfolio = () => {
           ))}
         </div>
         <div className="my-6 bg-light-black rounded-sm p-3">
-          <h3 className="text-off-white text-2xl pb-2">Project Name</h3>
+          <div className="flex justify-between items-center">
+            <div className="flex flex-col">
+              <h3 className="text-off-white text-2xl">Project Name</h3>
+              <h3 className="text-off-white text-md pb-2">
+                Tagline tagline tagline
+              </h3>
+            </div>
+            <div className="flex space-x-2">
+              <PortIconLink
+                href={"https://github.com/l-lavelle"}
+                img={LinkedinLogo}
+              />
+              <PortIconLink
+                href={"https://github.com/l-lavelle"}
+                img={LinkedinLogo}
+              />
+            </div>
+          </div>
           <div className="border-t border-gray-300 my-1"></div>
-          <h3 className="text-off-white text-lg">Summary :</h3>
-          <p className="text-off-white">
-            Lorem Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry's standard
-            dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic
-            typesetting,
-          </p>
-
           {/* bullet points */}
           <h3 className="text-off-white text-lg mt-3">Key Features : </h3>
           <ul className="list-disc list-inside ml-3">
@@ -143,7 +147,14 @@ const Portfolio = () => {
             <li className="text-off-white">Tea</li>
             <li className="text-off-white">Milk</li>
           </ul>
-
+          <h3 className="text-off-white text-lg mt-3">Contributions :</h3>
+          <p className="text-off-white">
+            <ul className="list-disc list-inside ml-3">
+              <li className="text-off-white">Coffee</li>
+              <li className="text-off-white">Tea</li>
+              <li className="text-off-white">Milk</li>
+            </ul>
+          </p>
           <h3 className="text-off-white text-lg mt-3 mb-1">
             Tools & Technologies :
           </h3>
@@ -155,3 +166,9 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+
+const PortIconLink = ({ href, img }: { href: string; img: string }) => (
+  <a href={href} target="_blank">
+    <img src={img} width={30} />
+  </a>
+);
