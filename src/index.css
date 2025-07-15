@@ -32,45 +32,36 @@ div[role="tablist"] button[role="tab"][aria-selected="true"] {
   box-shadow: 2px 2px 2px var(--color-box-shadow-dark);
 }
 
-/* Home - Portfolio Cards */
-.project-card > div {
-  padding: 0px;
-  gap: 10px;
-}
-.project-card:last-child {
-  display: none;
-}
-@media (min-width: 768px) {
-  .project-card:last-child {
-    display: block;
-  }
-}
-
-/* Home - Blog Cards*/
-
+/* Home - Blog Cards & Portfolio Cards */
 @media (max-width: 640px) {
-  .blog-container {
+  .blog-container,
+  .project-container {
     overflow: hidden;
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  .blog-track {
+  .blog-track,
+  .project-track {
     display: flex;
     scroll-snap-type: y mandatory;
     overflow-x: scroll;
     width: 95%;
   }
-  .blog-track::-webkit-scrollbar {
+  .blog-track::-webkit-scrollbar,
+  .project-track::-webkit-scrollbar {
     display: none;
   }
-  .blog-card {
+  .blog-card,
+  .project-card {
     flex: 0 0 100%;
     margin-right: 10px;
     scroll-snap-align: start;
+    margin-bottom: 5px;
   }
 }
-.blog-card > div {
+.blog-card > div,
+.project-card > div {
   padding: 10px;
   gap: 10px;
 }

@@ -1,14 +1,13 @@
 import { Card } from "flowbite-react";
 import HeaderLink from "./homeComponents/headerLink";
-import { useRef, useState } from "react";
-import { handleMouseDown, handleMouseMove, handleMouseUp } from "../functions";
+import { useRef, type RefObject } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
-// scrollbar section
 const HomePortfolio = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const ref = useRef<HTMLDivElement>(null) as RefObject<HTMLInputElement>;
+  const { events } = useDraggable(ref, {
+    safeDisplacement: 11,
+  });
   const featuredPortfolio = [
     {
       imageSrc: "/LinkedIn_logo.png",
@@ -39,40 +38,21 @@ const HomePortfolio = () => {
             link={"/Portfolio"}
             title={"Featured Portfolio"}
           />
-          <div
-            className="flex my-4 space-x-3 space-y-3"
-            ref={containerRef}
-            onMouseDown={(event) => {
-              handleMouseDown(
-                event,
-                containerRef,
-                setIsDragging,
-                setStartX,
-                setScrollLeft
-              );
-            }}
-            onMouseMove={(event) => {
-              handleMouseMove(
-                event,
-                isDragging,
-                containerRef,
-                startX,
-                scrollLeft
-              );
-            }}
-            onMouseUp={() => {
-              handleMouseUp(setIsDragging);
-            }}
-            // onMouseLeave={handleMouseUp}
-          >
-            {featuredPortfolio.map(({ imageSrc, imageAlt, title, text }) => (
-              <HomePortfolioCard
-                imageSrc={imageSrc}
-                imageAlt={imageAlt}
-                title={title}
-                text={text}
-              />
-            ))}
+          <div className="project-container pb-4">
+            <div
+              className="project-track sm:flex sm:flex-row sm:mt-2 sm:space-x-4 sm:items-center xl:w-6xl"
+              ref={ref}
+              {...events}
+            >
+              {featuredPortfolio.map(({ imageSrc, imageAlt, title, text }) => (
+                <HomePortfolioCard
+                  imageSrc={imageSrc}
+                  imageAlt={imageAlt}
+                  title={title}
+                  text={text}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -92,7 +72,7 @@ const HomePortfolioCard = ({
   title: string;
   text: string;
 }) => (
-  <Card className="project-card w-80 bg-light-black border border-2 border-light-black shadow-[2px_3px_4px_var(--color-box-shadow-dark)] flex-1 h-full cursor-pointer">
+  <Card className="project-card xs:w-[170px]  bg-light-black border border-2 border-light-black shadow-[2px_3px_4px_var(--color-box-shadow-dark)] cursor-pointer">
     <img
       className="max-h-33 object-cover rounded-t-lg"
       src={imageSrc}
