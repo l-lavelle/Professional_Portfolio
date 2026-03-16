@@ -1,0 +1,72 @@
+/* Mobile Section */
+.swiper {
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+.swiper-pagination-bullet {
+  background: var(--color-primary);
+}
+
+@media (min-width: 768.99px) {
+  .swiper-card-wrapper {
+    display: none;
+  }
+  .portfolio-cards-wrapper {
+    display: flex;
+  }
+  .card {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-light-black);
+    transition: color 0.3s ease;
+    border-radius: 10px;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    right: 0;
+    height: 0%;
+    background-color: var(--color-primary);
+    z-index: 0;
+    transition: height 0.4s ease;
+  }
+
+  .card:hover {
+    box-shadow: 4px 4px 2px var(--color-box-shadow-dark);
+  }
+
+  .card:hover * {
+    color: var(--color-dark-black);
+  }
+
+  .card:hover::before {
+    height: 100%;
+  }
+
+  .card * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+  .portfolio-cards-wrapper {
+    display: none;
+  }
+  .card {
+    background-color: var(--color-light-black);
+    border-radius: 10px;
+  }
+}

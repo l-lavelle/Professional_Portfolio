@@ -2,7 +2,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import CustomNavItems from "./customNavItems";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { CustomDivider } from "../globalComponents";
+import { CustomDivider } from "../components";
 
 const CustomNavBar = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);

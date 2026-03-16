@@ -1,0 +1,102 @@
+.cube-swiper-wrapper {
+  min-height: 290px;
+  margin-top: 30px;
+}
+.cube-swiper {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -135px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide .cube-img {
+  display: block;
+  width: 100%;
+}
+.cube-swiper .swiper-pagination {
+  bottom: auto;
+}
+.cube-swiper .swiper-pagination-bullet {
+  background-color: var(--color-off-white);
+}
+.cube-swiper .swiper-pagination-bullet-active {
+  background-color: var(--color-primary);
+}
+.cubed-slide-wrapper {
+  position: relative;
+}
+.badge-wrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+/* Moblie Blog Cards */
+.moblie-badge-title {
+  padding: 5px 10px;
+  background-color: var(--color-dark-black);
+  color: var(--color-off-white);
+  width: 100%;
+  opacity: 0.75;
+}
+.moblie-badges {
+  padding: 3px 10px 3px 10px;
+}
+
+/* Desktop Blog Cards */
+.blog-card {
+  margin-right: 10px;
+  border: none;
+  width: 100%;
+}
+.blog-card > div {
+  padding: 0px;
+  gap: 10px;
+}
+.blog-wrapper-img {
+  position: relative;
+  width: 100%;
+}
+.blog-wrapper-img > img {
+  width: 100%;
+  padding: 5px;
+}
+.desktop-badge-wrapper {
+  display: none;
+}
+
+.blog-card:hover .desktop-badge-wrapper {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  padding: 7px 8px 0px 8px;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+@media (min-width: 640.99px) {
+  .cube-swiper-wrapper {
+    display: none;
+  }
+  .blog-cards-wrapper {
+    display: flex;
+    width: 100%;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 640px) {
+  .blog-cards-wrapper {
+    display: none;
+  }
+}

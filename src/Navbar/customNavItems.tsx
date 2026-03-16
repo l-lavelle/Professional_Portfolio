@@ -6,7 +6,7 @@ const CustomNavItems = ({
   onClick,
 }: {
   linkClass: string;
-  onClick?: Dispatch<SetStateAction<boolean>> | undefined;
+  onClick?: Dispatch<SetStateAction<boolean>>;
 }) => {
   const location = useLocation();
   const [active, setActive] = useState<string>("");
@@ -36,7 +36,7 @@ const CustomNavItems = ({
             href === active
               ? "bg-light-black text-white"
               : "text-off-white hover:bg-light-black",
-            linkClass
+            linkClass,
           )}
           onClick={() => {
             if (onClick) onClick(true);

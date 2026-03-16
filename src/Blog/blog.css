@@ -1,0 +1,23 @@
+.blog-img-section {
+  position: relative;
+}
+.blog-badge-wrapper {
+  position: absolute;
+  bottom: 0;
+  padding: 7px 8px 0px 8px;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+select {
+  border-radius: 5px;
+  border: 1px solid var(--color-off-white);
+  padding: 6px 12px 6px 12px;
+}
+
+select:focus,
+select:active {
+  outline: none;
+}

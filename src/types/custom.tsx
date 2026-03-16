@@ -1,12 +1,10 @@
-export type AboutInfo = {
-  tooltipImage: string;
-  infoImage: string;
-  infoInformation: { title: string; additional: string[] };
-};
-
-export type BadgeArray = {
+export type Badges = {
   badgeTitle: string;
   badgeImage: string;
+};
+
+export type BadgeCategories = Badges & {
+  tag: string;
 };
 
 export type BlogData = {
@@ -14,7 +12,7 @@ export type BlogData = {
   title: string;
   text: string;
   img: string;
-  badgeArray: BadgeArray[];
+  badges: Badges[];
 };
 
 export type BlogFocus = { dataId: number; open: boolean };
@@ -23,4 +21,8 @@ export type PortfolioIndex = {
   first: number;
   middle: number;
   last: number;
+};
+
+export type RefInput = {
+  [key: string]: HTMLInputElement | HTMLTextAreaElement | null;
 };

@@ -3,7 +3,7 @@ import {
   ArrowLeftCircleIcon,
   ArrowRightCircleIcon,
 } from "@heroicons/react/24/outline";
-import CustomBadges from "../Home/customBadges";
+import CustomBadges from "../components/customBadges";
 import LinkedinLogo from "/LinkedIn_logo.png";
 import type { PortfolioIndex } from "../types/custom";
 

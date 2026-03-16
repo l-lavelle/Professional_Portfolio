@@ -1,4 +1,4 @@
-import CustomNavBar from "./Navbar/index";
+import CustomNavBar from "./navbar/index";
 import { Outlet } from "react-router-dom";
 import { QueryProvider } from "./Blog/context";
 
@@ -7,9 +7,7 @@ function App() {
     <>
       <CustomNavBar />
       <QueryProvider>
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
       </QueryProvider>
     </>
   );

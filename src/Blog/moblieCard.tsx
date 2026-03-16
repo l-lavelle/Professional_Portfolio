@@ -1,13 +1,8 @@
-import { Card } from "flowbite-react";
-import { CustomDivider } from "../globalComponents";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
-import CustomBadges from "../Home/customBadges";
-import type { BadgeArray, BlogData, BlogFocus } from "../types/custom";
-
-export const truncateText = (text: string) => {
-  return text.length > 150 ? text.substring(0, 150) : text;
-};
+import type { BlogData, BlogFocus } from "../types/custom";
+import { truncateText } from "../functions";
+import BlogPageCard from "./card";
 
 const MoblieSection = ({ data }: { data: BlogData[] }) => {
   const [open, setOpen] = useState<BlogFocus[]>([]);
@@ -26,13 +21,27 @@ const MoblieSection = ({ data }: { data: BlogData[] }) => {
     }
   };
 
+  if (data.length === 0) {
+    return (
+      <div className="md:hidden">
+        <BlogPageCard
+          title={"No Blogs Found"}
+          img={"/LinkedIn_logo.png"}
+          badgeArray={[]}
+          textNode={"Try different search terms"}
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="md:hidden space-y-3 mb-5">
-      {data.map(({ id, title, text, img, badgeArray }) => (
-        <BlogCard
+    <div className="md:hidden space-y-3 mb-2">
+      {data.map(({ id, title, text, img, badges }, index) => (
+        <BlogPageCard
+          key={`${title} ${index}`}
           title={title}
           img={img}
-          badgeArray={badgeArray}
+          badgeArray={badges}
           textNode={
             <>
               <p>{isOpen(id) ? text : truncateText(text)}</p>
@@ -56,34 +65,3 @@ const MoblieSection = ({ data }: { data: BlogData[] }) => {
 };
 
 export default MoblieSection;
-
-export const BlogCard = ({
-  title,
-  img,
-  badgeArray,
-  textNode,
-}: {
-  title: string;
-  img: string;
-  badgeArray: BadgeArray[];
-  textNode: ReactNode;
-}) => {
-  return (
-    <Card className="bg-primary">
-      <div>
-        <h3 className="text-2xl font-bold">{title}</h3>
-
-        <CustomDivider color={"light-black"} margin={"2"} />
-        {textNode}
-
-        <img
-          className="max-h-30 w-full object-cover rounded-lg mr-5"
-          src={img}
-        />
-        <div className="mt-2">
-          <CustomBadges badgeArray={badgeArray} />
-        </div>
-      </div>
-    </Card>
-  );
-};
