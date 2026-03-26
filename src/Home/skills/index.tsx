@@ -6,7 +6,6 @@ import { Autoplay } from "swiper/modules";
 import { useState } from "react";
 import type { BadgeCategories } from "../../types/custom";
 
-// TODO: make tabs little bigger - at least on larger screens
 const tagTabs = [
   {
     title: "All",
@@ -77,14 +76,22 @@ const SkillsSection = () => {
   const [tag, setTag] = useState<string>("All");
 
   return (
-    <section className="relative w-full py-6 bg-primary">
-      <div className=" flex flex-col max-w-6xl my-8 px-3 mx-auto space-y-1 lg:space-x-10">
-        <h3 className="text-2xl font-medium text-center md:text-left mb-4">
-          Skills
-        </h3>
-        <TagTabs tagTabs={tagTabs} tag={tag} setTag={setTag} />
-        <div className="diamond-pattern p-3">
+    <section className="w-full py-6 bg-primary-light">
+      <div className="flex flex-col my-8 mx-auto space-y-1">
+        <div className="bg-primary flex justify-center items-center px-6 py-3">
+          <div className="w-full max-w-6xl">
+            <h3 className="text-2xl font-medium text-center md:text-left mb-4">
+              Areas of Expertise
+            </h3>
+            <div className="flex justify-center md:justify-start">
+              <TagTabs tagTabs={tagTabs} tag={tag} setTag={setTag} />
+            </div>
+          </div>
+        </div>
+        <div className="px-3">
           {/* TODO: turn autoplay on */}
+          {/* TODO: Coloring for different types of skills */}
+          {/* TODO: connect to porfolio page with tag selected?? */}
           <Swiper
             slidesPerView={3}
             breakpoints={{

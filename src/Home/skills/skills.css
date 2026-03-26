@@ -1,42 +1,12 @@
-div[role="tablist"] button[role="tab"] {
-  background-color: var(--color-box-shadow-dark);
-  color: var(--color-off-white);
-  padding: 10px;
-  margin-right: 4px;
-  border-radius: 10px;
+.skills-tab-text {
   font-size: 16px;
-  font-weight: 400;
-}
-div[role="tablist"] button[role="tab"]:hover {
-  cursor: pointer;
-}
-div[role="tablist"] button[role="tab"][aria-selected="true"] {
-  background-color: var(--color-light-black);
-  color: var(--color-off-white);
-  box-shadow: 2px 2px 2px var(--color-box-shadow-dark);
-}
-
-.diamond-pattern {
-  position: relative;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.diamond-pattern::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-color: #cce4ff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Crect x='5' y='5' width='20' height='20' rx='1' fill='%23b5d5ff' transform='rotate(45 15 15)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  mask-image: linear-gradient(to top, black 30%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to top, black 30%, transparent 100%);
 }
 
 .skillsSwiper {
   width: 100%;
   overflow: hidden;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
+  padding-top: 20px;
 }
 .skillsSwiper .swiper-slide {
   text-align: center;

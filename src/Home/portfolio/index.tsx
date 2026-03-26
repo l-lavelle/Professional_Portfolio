@@ -31,7 +31,7 @@ const HomePortfolio = () => {
         <div className="mx-3 xl:mx-auto my-8 sm:my-10">
           <HeaderLink
             extraClasses={
-              "text-off-white justify-self-center md:justify-self-start sm:mb-4 ml-1"
+              "text-off-white justify-self-center md:justify-self-start sm:mb-4"
             }
             link={"/Portfolio"}
             title={"Featured Portfolio"}
@@ -51,7 +51,7 @@ const HomePortfolio = () => {
             initialSlide={1}
             pagination={true}
             modules={[EffectCoverflow, Pagination]}
-            className="swiper-card-wrapper"
+            className="portfolioSwiper"
           >
             {featuredPortfolio.map((info, index) => (
               <SwiperSlide key={index}>

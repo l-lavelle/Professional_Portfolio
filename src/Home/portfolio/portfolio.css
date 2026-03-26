@@ -1,23 +1,23 @@
 /* Mobile Section */
-.swiper {
+.portfolioSwiper {
   width: 100%;
   padding-top: 25px;
   padding-bottom: 50px;
 }
 
-.swiper-slide {
+.portfolioSwiper .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 300px;
   height: auto;
   border-radius: 10px;
 }
-.swiper-pagination-bullet {
+.portfolioSwiper .swiper-pagination-bullet {
   background: var(--color-primary);
 }
 
 @media (min-width: 768.99px) {
-  .swiper-card-wrapper {
+  .portfolioSwiper {
     display: none;
   }
   .portfolio-cards-wrapper {
