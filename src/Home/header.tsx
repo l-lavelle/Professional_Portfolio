@@ -33,7 +33,7 @@ const Header = () => {
                 problems. Passionate about building scalable solutions that
                 drive innovation.
               </p>
-              <div className="flex">
+              <div className="flex space-x-2">
                 <IconLink
                   href={"https://github.com/l-lavelle"}
                   img={GithubLogo}

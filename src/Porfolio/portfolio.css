@@ -1,0 +1,12 @@
+.port-panel {
+  min-width: 0;
+  transition:
+    flex-grow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.15s ease;
+}
+.port-panel.side {
+  flex-grow: 0.5;
+}
+.port-panel.center {
+  flex-grow: 5;
+}

@@ -9,7 +9,7 @@ const SkillsBadges = ({
 }) => (
   <div
     key={`${badgeTitle}`}
-    className="flex flex-col items-center glassy-background rounded p-4 space-y-2"
+    className="flex flex-col items-center glassy-background rounded p-4 space-y-2 cursor-pointer"
   >
     <img src={badgeImage} width={60} height={60} />
     <p>{badgeTitle}</p>
