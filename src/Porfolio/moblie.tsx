@@ -1,5 +1,5 @@
-import { useState } from "react";
-import type { PortfolioOptions } from ".";
+import { useEffect, useRef, useState, useContext } from "react";
+import type { PortfolioOptions } from "../types/custom";
 import GithubLogo from "/github_logo.png";
 import {
   GlobeAltIcon,
@@ -10,6 +10,7 @@ import {
   PortfolioList,
   PortfolioTechStack,
 } from "./components";
+import { GlobalContext } from "../globalContext";
 
 // TODO: add tagline??
 const MobliePortfolio = ({
@@ -18,6 +19,15 @@ const MobliePortfolio = ({
   portfolioOptions: PortfolioOptions[];
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  //   TODO: testing
+  const { portfolioId } = useContext(GlobalContext);
+  const portfolioIndex = portfolioId - 1;
+  const cardRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    cardRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [portfolioIndex]);
 
   return (
     <div className="flex flex-col items-center space-y-6 my-6 mx-3 md:hidden">
@@ -44,6 +54,7 @@ const MobliePortfolio = ({
                 maxHeight: isActive ? "900px" : "300px",
                 transition: "max-height 0.6s ease-in-out",
               }}
+              ref={portfolioIndex === index ? cardRef : null}
             >
               <div className="flex flex-col w-full">
                 <div className="relative h-[300px] w-full flex-shrink-0">

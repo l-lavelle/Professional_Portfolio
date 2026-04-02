@@ -1,6 +1,6 @@
 import MoblieSection from "./moblieCard";
 import CustomSearchBar from "./searchBar";
-import { QueryContext } from "./context";
+import { GlobalContext } from "../globalContext";
 import { useContext } from "react";
 import DesktopCard from "./desktopCard";
 import "./blog.css";
@@ -9,7 +9,7 @@ import CardFlip from "./text";
 // Search Bar dark mode
 
 const Blog = () => {
-  const { query, tag } = useContext(QueryContext);
+  const { query, tag } = useContext(GlobalContext);
 
   const data = [
     {

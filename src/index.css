@@ -144,21 +144,3 @@ main {
   color: var(--color-off-white);
   margin-top: -8px;
 }
-
-/* TODO: Move or Figure out  */
-/* Portfolio Arrows */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-.left-arrow {
-  left: 0;
-}
-.right-arrow {
-  right: 0;
-}

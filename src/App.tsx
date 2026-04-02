@@ -1,14 +1,14 @@
 import CustomNavBar from "./navbar/index";
 import { Outlet } from "react-router-dom";
-import { QueryProvider } from "./Blog/context";
+import { GlobalProvider } from "./globalContext";
 
 function App() {
   return (
     <>
       <CustomNavBar />
-      <QueryProvider>
+      <GlobalProvider>
         <Outlet />
-      </QueryProvider>
+      </GlobalProvider>
     </>
   );
 }

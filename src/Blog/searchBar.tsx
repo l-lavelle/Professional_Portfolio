@@ -1,9 +1,9 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
-import { QueryContext } from "./context";
+import { GlobalContext } from "../globalContext";
 import { useContext } from "react";
 
 const CustomSearchBar = ({ categories }: { categories: string[] }) => {
-  const { setQuery, setTag } = useContext(QueryContext);
+  const { setQuery, setTag } = useContext(GlobalContext);
 
   return (
     <div className="mb-3">

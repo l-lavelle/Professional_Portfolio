@@ -48,7 +48,13 @@ const CustomNavBar = () => {
             </div>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <Link to={"/"} onClick={() => setClosed(true)}>
+            <Link
+              to={"/"}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                setClosed(true);
+              }}
+            >
               <div className="flex shrink-0 items-center">
                 <img
                   alt="Lo Tech Hub"

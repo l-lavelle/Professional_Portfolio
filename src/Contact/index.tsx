@@ -9,12 +9,12 @@ const Contact = () => {
         <div className="bg-primary-light rounded-lg px-3 py-5 w-full md:max-w-3xl xl:max-w-4xl mx-3 md:mx-0">
           <div className="pl-4 pb-3">
             <h1 className="font-semibold text-2xl mb-2">Get In Touch</h1>
-            <text>
+            <p>
               Nice Message: It was popularised in the 1960s with the release of
               Letraset sheets containing Lorem Ipsum passages, and more recently
               with desktop publishing software like Aldus PageMaker including
               versions of Lorem Ipsum.
-            </text>
+            </p>
           </div>
           <div className="flex flex-col sm:flex-row items-stretch justify-center sm:space-x-5">
             <div className="sm:w-1/2 hidden sm:block pl-5">

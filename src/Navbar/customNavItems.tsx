@@ -39,6 +39,7 @@ const CustomNavItems = ({
             linkClass,
           )}
           onClick={() => {
+            window.scrollTo(0, 0);
             if (onClick) onClick(true);
           }}
         >

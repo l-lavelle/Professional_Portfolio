@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LinkedinLogo from "/LinkedIn_logo.png";
 import type { PortfolioIndex } from "../types/custom";
 import MobliePortfolio from "./moblie";
@@ -10,24 +10,13 @@ import {
 } from "./components";
 import GithubLogo from "/github_logo.png";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
-
-export type PortfolioOptions = {
-  id: number;
-  img: string;
-  projectName: string;
-  tagline: string;
-  projectLink: string;
-  githubLink: string;
-  keyFeatures: string[];
-  contributions: string[];
-  techStack: string[];
-};
+import { GlobalContext } from "../globalContext";
 
 const Portfolio = () => {
   // TODO: If click from home page middle show be the one clicked on
-  // TODO: on hover scroll through webpage - get bigger
   // TODO: Clean up and Submit
-
+  const { portfolioId } = useContext(GlobalContext);
+  const portfolioIndex = portfolioId - 1;
   const portfolioOptions = [
     {
       id: 1,
@@ -39,6 +28,8 @@ const Portfolio = () => {
       keyFeatures: ["feature1", "feature2", "feature3"],
       contributions: ["contribution1", "contribution2", "contribution3"],
       techStack: [LinkedinLogo, LinkedinLogo, LinkedinLogo],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 2,
@@ -50,6 +41,8 @@ const Portfolio = () => {
       keyFeatures: ["feature1", "feature2", "feature3"],
       contributions: ["contribution1", "contribution2", "contribution3"],
       techStack: [LinkedinLogo, LinkedinLogo, LinkedinLogo],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 3,
@@ -61,6 +54,8 @@ const Portfolio = () => {
       keyFeatures: ["feature1", "feature2", "feature3"],
       contributions: ["contribution1", "contribution2", "contribution3"],
       techStack: [LinkedinLogo, LinkedinLogo, LinkedinLogo],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 4,
@@ -72,6 +67,8 @@ const Portfolio = () => {
       keyFeatures: ["feature1", "feature2", "feature3"],
       contributions: ["contribution1", "contribution2", "contribution3"],
       techStack: [LinkedinLogo, LinkedinLogo, LinkedinLogo],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 5,
@@ -83,13 +80,17 @@ const Portfolio = () => {
       keyFeatures: ["feature1", "feature2", "feature3"],
       contributions: ["contribution1", "contribution2", "contribution3"],
       techStack: [LinkedinLogo, LinkedinLogo, LinkedinLogo],
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
   ];
 
   const [portIndex, setPortIndex] = useState<PortfolioIndex>({
-    first: 0,
-    middle: 1,
-    last: 2,
+    first:
+      portfolioIndex === 0 ? portfolioOptions.length - 1 : portfolioIndex - 1,
+    middle: portfolioIndex,
+    last:
+      portfolioIndex === portfolioOptions.length - 1 ? 0 : portfolioIndex + 1,
   });
 
   const rotateForward = (field: keyof PortfolioIndex) =>
@@ -189,8 +190,9 @@ const Portfolio = () => {
         </div>
 
         <div className="flex justify-center mt-3">
-          {portfolioOptions.map((_item, index) => (
+          {portfolioOptions.map((item, index) => (
             <div
+              key={item.id}
               className={`w-[10px] h-[10px] m-2 cursor-pointer rounded-full ${
                 portIndex.middle === index
                   ? "bg-primary"
