@@ -20,8 +20,8 @@ const AboutInfoSection = ({
       <h3 className="py-2  font-semibold text-2xl">{title}</h3>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-      {infoData.map(({ tooltipImage, infoImage, infoInformation }) => (
-        <div className="flex [&>div]:flex [&>div]:flex-1">
+      {infoData.map(({ tooltipImage, infoImage, infoInformation }, index) => (
+        <div key={index} className="flex [&>div]:flex [&>div]:flex-1">
           <AboutInfoCards
             tooltipImage={tooltipImage}
             infoImage={infoImage}
@@ -58,8 +58,10 @@ const AboutInfoCards = ({
               {infoInformation.subtitle}
             </p>
           )}
-          {infoInformation.additional.map((info) => (
-            <p className="text-dark-black text-sm">{info}</p>
+          {infoInformation.additional.map((info, index) => (
+            <p key={index} className="text-dark-black text-sm">
+              {info}
+            </p>
           ))}
         </div>
       </div>

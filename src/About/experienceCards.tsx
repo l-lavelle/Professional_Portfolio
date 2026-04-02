@@ -38,13 +38,15 @@ const ExperienceCards = ({
           </div>
         </div>
 
-        <p className="mt-3">
+        <div className="mt-3">
           <ul className="list-disc list-inside ml-3">
-            {experinceArray.map((experience) => (
-              <li className="text-dark-black my-1">{experience}</li>
+            {experinceArray.map((experience, index) => (
+              <li key={index} className="text-dark-black my-1">
+                {experience}
+              </li>
             ))}
           </ul>
-        </p>
+        </div>
       </div>
     </div>
   </div>
