@@ -4,6 +4,7 @@ import type { PortfolioIndex } from "../types/custom";
 import MobliePortfolio from "./moblie";
 import "./portfolio.css";
 import {
+  DesktopPortfolioCarsouselImg,
   PortfolioIconLink,
   PortfolioList,
   PortfolioTechStack,
@@ -13,10 +14,8 @@ import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { GlobalContext } from "../globalContext";
 
 const Portfolio = () => {
-  // TODO: If click from home page middle show be the one clicked on
-  // TODO: Clean up and Submit
   const { portfolioId } = useContext(GlobalContext);
-  const portfolioIndex = portfolioId - 1;
+
   const portfolioOptions = [
     {
       id: 1,
@@ -85,32 +84,37 @@ const Portfolio = () => {
     },
   ];
 
+  const portfolioIndex = portfolioId - 1;
+  const lastPortfolioOptionIndex = portfolioOptions.length - 1;
+
+  const rotateForward = (index: number) =>
+    index === lastPortfolioOptionIndex ? 0 : index + 1;
+
+  const rotateBackward = (index: number) =>
+    index === 0 ? lastPortfolioOptionIndex : index - 1;
+
   const [portIndex, setPortIndex] = useState<PortfolioIndex>({
-    first:
-      portfolioIndex === 0 ? portfolioOptions.length - 1 : portfolioIndex - 1,
-    middle: portfolioIndex,
-    last:
-      portfolioIndex === portfolioOptions.length - 1 ? 0 : portfolioIndex + 1,
+    prev: rotateBackward(portfolioIndex),
+    center: portfolioIndex,
+    next: rotateForward(portfolioIndex),
   });
+  const currentProject = portfolioOptions[portIndex.center];
 
-  const rotateForward = (field: keyof PortfolioIndex) =>
-    portIndex[field] === portfolioOptions.length - 1 ? 0 : portIndex[field] + 1;
-
-  const rotateBackward = (field: keyof PortfolioIndex) =>
-    portIndex[field] === 0 ? portfolioOptions.length - 1 : portIndex[field] - 1;
+  const [centerIndex, setCenterIndex] = useState(portIndex.center);
+  const [animating, setAnimating] = useState(false);
 
   const rotatePortfolios = (direction: "forward" | "back") => {
-    const isForward = direction === "forward" ? true : false;
+    const rotate = direction === "forward" ? rotateForward : rotateBackward;
+
     setPortIndex({
-      first: isForward ? rotateForward("first") : rotateBackward("first"),
-      middle: isForward ? rotateForward("middle") : rotateBackward("middle"),
-      last: isForward ? rotateForward("last") : rotateBackward("last"),
+      prev: rotate(portIndex.prev),
+      center: rotate(portIndex.center),
+      next: rotate(portIndex.next),
     });
   };
 
   const paginationIndex = (index: number) => {
     if (animating) return;
-    const arrayLength = portfolioOptions.length - 1;
     const addOne = index + 1;
     const subtractOne = index - 1;
 
@@ -119,16 +123,13 @@ const Portfolio = () => {
 
     setTimeout(() => {
       setPortIndex({
-        first: subtractOne < 0 ? arrayLength : subtractOne,
-        middle: index,
-        last: addOne > arrayLength ? 0 : addOne,
+        prev: subtractOne < 0 ? lastPortfolioOptionIndex : subtractOne,
+        center: index,
+        next: addOne > lastPortfolioOptionIndex ? 0 : addOne,
       });
       setAnimating(false);
     }, 500);
   };
-
-  const [centerIndex, setCenterIndex] = useState(portIndex.middle);
-  const [animating, setAnimating] = useState(false);
 
   const handleSideClick = (direction: "back" | "forward", newIndex: number) => {
     if (animating) return;
@@ -141,7 +142,6 @@ const Portfolio = () => {
     }, 500);
   };
 
-  const currentProject = portfolioOptions[portIndex.middle];
   return (
     <section className="max-w-full bg-dark-black">
       <MobliePortfolio portfolioOptions={portfolioOptions} />
@@ -149,44 +149,20 @@ const Portfolio = () => {
       {/* Desktop Portfolio */}
       <div className="max-w-6xl mb-8 px-3 mx-auto hidden md:block">
         <div className="flex md:space-x-5 pt-8">
-          <div
-            className={`relative h-[350px] bg-light-black cursor-pointer rounded-md
-              ${
-                centerIndex === portIndex.first
-                  ? "port-panel center"
-                  : "port-panel side"
-              }`}
-            onClick={() => handleSideClick("back", portIndex.first)}
-          >
-            <img
-              src={portfolioOptions[portIndex.first].img}
-              className="absolute inset-0 w-full h-full object-cover rounded-md"
-            />
-          </div>
-          <div
-            className={`relative h-[350px] bg-light-black rounded-md port-panel ${
-              centerIndex === portIndex.middle ? "center" : "side"
-            }`}
-          >
-            <img
-              src={currentProject.img}
-              className="absolute inset-0 w-full h-full object-cover rounded-md"
-            />
-          </div>
-          <div
-            className={`relative h-[350px] bg-light-black rounded-md cursor-pointer
-              ${
-                centerIndex === portIndex.last
-                  ? "port-panel center"
-                  : "port-panel side"
-              }`}
-            onClick={() => handleSideClick("forward", portIndex.last)}
-          >
-            <img
-              src={portfolioOptions[portIndex.last].img}
-              className="absolute inset-0 w-full h-full object-cover rounded-md"
-            />
-          </div>
+          <DesktopPortfolioCarsouselImg
+            imgSrc={portfolioOptions[portIndex.prev].img}
+            wrapperAddClasses={`cursor-pointer  ${centerIndex === portIndex.prev ? "port-panel center" : "port-panel side"}`}
+            onClick={() => handleSideClick("back", portIndex.prev)}
+          />
+          <DesktopPortfolioCarsouselImg
+            imgSrc={currentProject.img}
+            wrapperAddClasses={`port-panel ${centerIndex === portIndex.center ? "center" : "side"}`}
+          />
+          <DesktopPortfolioCarsouselImg
+            imgSrc={portfolioOptions[portIndex.next].img}
+            wrapperAddClasses={`cursor-pointer  ${centerIndex === portIndex.next ? "port-panel center" : "port-panel side"}`}
+            onClick={() => handleSideClick("forward", portIndex.next)}
+          />
         </div>
 
         <div className="flex justify-center mt-3">
@@ -194,12 +170,12 @@ const Portfolio = () => {
             <div
               key={item.id}
               className={`w-[10px] h-[10px] m-2 cursor-pointer rounded-full ${
-                portIndex.middle === index
+                portIndex.center === index
                   ? "bg-primary"
                   : "bg-primary opacity-50"
               }`}
               style={
-                portIndex.middle === index
+                portIndex.center === index
                   ? { boxShadow: "0 0 8px 3px var(--color-primary)" }
                   : {}
               }

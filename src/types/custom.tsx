@@ -18,9 +18,9 @@ export type BlogData = {
 export type BlogFocus = { dataId: number; open: boolean };
 
 export type PortfolioIndex = {
-  first: number;
-  middle: number;
-  last: number;
+  prev: number;
+  center: number;
+  next: number;
 };
 
 export type RefInput = {

@@ -4,7 +4,6 @@ import { GlobalContext } from "../../globalContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-// TODO: add back in image alt
 const HomePortfolioCard = ({
   portfolioInfo,
 }: {
@@ -26,16 +25,12 @@ const HomePortfolioCard = ({
       <img
         className="h-45 w-full object-cover rounded-t-lg"
         src={img}
-        // alt={imageAlt}
+        alt={`Image for ${projectName} project`}
         draggable={false}
       />
       <div className="flex flex-col justify-start p-3">
-        <h5 className="text-2xl font-semibold tracking-tight text-off-white dark:text-white">
-          {projectName}
-        </h5>
-        <p className="mt-1.5 font-normal text-off-white dark:text-gray-400">
-          {description}
-        </p>
+        <h5 className="text-2xl font-semibold tracking-tight">{projectName}</h5>
+        <p className="mt-1.5 font-normal">{description}</p>
       </div>
     </div>
   );

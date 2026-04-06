@@ -12,18 +12,15 @@ import {
 } from "./components";
 import { GlobalContext } from "../globalContext";
 
-// TODO: add tagline??
 const MobliePortfolio = ({
   portfolioOptions,
 }: {
   portfolioOptions: PortfolioOptions[];
 }) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  //   TODO: testing
   const { portfolioId } = useContext(GlobalContext);
   const portfolioIndex = portfolioId - 1;
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     cardRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -41,6 +38,7 @@ const MobliePortfolio = ({
             contributions,
             techStack,
             projectLink,
+            tagline,
           },
           index,
         ) => {
@@ -101,6 +99,7 @@ const MobliePortfolio = ({
                   }}
                 >
                   <div className="glassy-background p-4 flex flex-col space-y-5">
+                    <h3 className="text-md">{tagline}</h3>
                     <PortfolioList list={keyFeatures} title="Key Features" />
                     <PortfolioList list={contributions} title="Contributions" />
                     <PortfolioTechStack techStack={techStack} />

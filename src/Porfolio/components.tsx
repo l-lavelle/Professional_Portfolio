@@ -51,3 +51,23 @@ export const PortfolioTechStack = ({ techStack }: { techStack: string[] }) => (
     </div>
   </div>
 );
+
+export const DesktopPortfolioCarsouselImg = ({
+  imgSrc,
+  wrapperAddClasses,
+  onClick,
+}: {
+  imgSrc: string;
+  wrapperAddClasses?: string;
+  onClick?: () => void;
+}) => (
+  <div
+    className={`relative h-[350px] bg-light-black rounded-md ${wrapperAddClasses}`}
+    onClick={onClick}
+  >
+    <img
+      src={imgSrc}
+      className="absolute inset-0 w-full h-full object-cover rounded-md"
+    />
+  </div>
+);

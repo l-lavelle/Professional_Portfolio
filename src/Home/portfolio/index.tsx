@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import LinkedinLogo from "/LinkedIn_logo.png";
 
-// TODO: Fix the desktop version so that 5 arent so big
 const HomePortfolio = () => {
   const portfolioOptions = [
     {
@@ -79,9 +78,7 @@ const HomePortfolio = () => {
       <section className="w-full xl:max-w-6xl">
         <div className="mx-3 xl:mx-auto my-8 sm:my-10">
           <HeaderLink
-            extraClasses={
-              "text-off-white justify-self-center md:justify-self-start sm:mb-4"
-            }
+            extraClasses={"text-off-white justify-self-center sm:mb-4"}
             link={"/Portfolio"}
             title={"Featured Portfolio"}
           />
@@ -97,7 +94,7 @@ const HomePortfolio = () => {
               modifier: 1,
               slideShadows: true,
             }}
-            initialSlide={1}
+            initialSlide={2}
             pagination={true}
             modules={[EffectCoverflow, Pagination]}
             className="portfolioSwiper"
@@ -111,14 +108,6 @@ const HomePortfolio = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="portfolio-cards-wrapper flex pb-4 md:space-x-3">
-            {portfolioOptions.map((info, index) => (
-              <HomePortfolioCard
-                key={`${info.projectName} ${index}`}
-                portfolioInfo={info}
-              />
-            ))}
-          </div>
         </div>
       </section>
     </section>
