@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./home";
 import About from "./about";
-import Portfolio from "./Porfolio";
+import Portfolio from "./portfolio";
 import Blog from "./Blog";
 import Contact from "./contact";
 import ErrorPage from "./error";
