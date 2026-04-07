@@ -4,7 +4,6 @@ import { GlobalContext } from "../globalContext";
 import { useContext } from "react";
 import DesktopCard from "./desktopCard";
 import "./blog.css";
-import CardFlip from "./text";
 
 // Search Bar dark mode
 
@@ -115,8 +114,7 @@ const Blog = () => {
 
   return (
     <section className="mx-auto pt-4 flex-1 bg-dark-black">
-      {/* <CardFlip /> */}
-      {/* <div className="bg-light-black rounded-md mx-3 p-3 mb-5 shadow-[3px_3px_4px_4px_var(--color-dark-black)]">
+      <div className="bg-light-black rounded-md mx-3 p-3 mb-5 shadow-[3px_3px_4px_4px_var(--color-dark-black)]">
         <div>
           <h2 className="text-2xl text-off-white">Five Minute Fuel</h2>
 
@@ -129,7 +127,7 @@ const Blog = () => {
         </div>
         <MoblieSection data={filteredCat} />
       </div>
-      <DesktopCard data={filteredCat} /> */}
+      <DesktopCard data={filteredCat} />
     </section>
   );
 };
