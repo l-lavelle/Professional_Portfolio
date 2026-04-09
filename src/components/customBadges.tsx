@@ -1,8 +1,8 @@
 import type { Badges } from "../types/custom";
 
-const CustomBadges = ({ badgeArray }: { badgeArray: Badges[] }) => (
+const CustomBadges = ({ badges }: { badges: Badges[] }) => (
   <div className="rounded-sm space-x-2 space-y-2">
-    {badgeArray.map(({ badgeTitle, badgeImage }, index) => (
+    {badges.map(({ badgeTitle, badgeImage }, index) => (
       <span
         key={`${badgeTitle} ${index}`}
         className={`inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset ${

@@ -18,7 +18,7 @@ type GlobalVars = {
 const GlobalContext = createContext<GlobalVars>({
   query: "",
   setQuery: () => {},
-  tag: "",
+  tag: "All",
   setTag: () => {},
   portfolioId: 1,
   setPortfolioId: () => {},
@@ -26,7 +26,7 @@ const GlobalContext = createContext<GlobalVars>({
 
 const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [query, setQuery] = useState<string>("");
-  const [tag, setTag] = useState<string>("");
+  const [tag, setTag] = useState<string>("All");
   const [portfolioId, setPortfolioId] = useState<number>(1);
 
   return (

@@ -7,12 +7,14 @@ export type BadgeCategories = Badges & {
   tag: string;
 };
 
-export type BlogData = {
+export type Blog = {
   id: number;
   title: string;
-  text: string;
-  img: string;
+  description: string;
   badges: Badges[];
+  image: string;
+  imageAlt: string;
+  date: string;
 };
 
 export type BlogFocus = { dataId: number; open: boolean };

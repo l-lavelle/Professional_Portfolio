@@ -8,13 +8,14 @@ import { Pagination } from "swiper/modules";
 const HomeBlog = () => {
   const blogs = [
     {
+      id: 1,
       title: "Noteworthy technology",
       description:
         " Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
       image: "/LinkedIn_logo.png",
       imageAlt: "example",
       date: "03-12-26",
-      badgeArray: [
+      badges: [
         {
           badgeTitle: "trial",
           badgeImage: "/LinkedIn_logo.png",
@@ -38,13 +39,14 @@ const HomeBlog = () => {
       ],
     },
     {
+      id: 2,
       title: "Noteworthy technology",
       description:
         " Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
       image: "/LinkedIn_logo.png",
       imageAlt: "example",
       date: "03-12-26",
-      badgeArray: [
+      badges: [
         {
           badgeTitle: "trial",
           badgeImage: "/LinkedIn_logo.png",
@@ -90,44 +92,18 @@ const HomeBlog = () => {
                 spaceBetween={20}
                 className="blogSwiper"
               >
-                {blogs.map(
-                  (
-                    { title, description, image, imageAlt, badgeArray, date },
-                    index,
-                  ) => (
-                    <SwiperSlide>
-                      <BlogCard
-                        key={`${title} ${index}`}
-                        title={title}
-                        description={description}
-                        badgeArray={badgeArray}
-                        image={image}
-                        imageAlt={imageAlt}
-                        date={date}
-                      />
-                    </SwiperSlide>
-                  ),
-                )}
+                {blogs.map((blog, index) => (
+                  <SwiperSlide>
+                    <BlogCard key={index} blog={blog} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
 
             <div className="blog-cards-wrapper flex">
-              {blogs.map(
-                (
-                  { title, description, image, imageAlt, badgeArray, date },
-                  index,
-                ) => (
-                  <BlogCard
-                    key={`${title} ${index}`}
-                    title={title}
-                    description={description}
-                    badgeArray={badgeArray}
-                    image={image}
-                    imageAlt={imageAlt}
-                    date={date}
-                  />
-                ),
-              )}
+              {blogs.map((blog, index) => (
+                <BlogCard key={index} blog={blog} />
+              ))}
             </div>
           </div>
         </div>

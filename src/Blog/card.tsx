@@ -1,39 +1,45 @@
-import { Card } from "flowbite-react";
-import { CustomDivider } from "../components";
 import { type ReactNode } from "react";
 import CustomBadges from "../components/customBadges";
 import type { Badges } from "../types/custom";
+import CalendarDate from "../components/calendarDate";
 
+// TODO: rename card and textNode
 const BlogPageCard = ({
   title,
-  img,
-  badgeArray,
+  image,
+  badges,
   textNode,
+  date,
 }: {
   title: string;
-  img: string;
-  badgeArray: Badges[];
+  image: string;
+  badges?: Badges[];
   textNode: ReactNode;
-}) => {
-  return (
-    <Card className="bg-primary">
-      <div>
-        <h3 className="text-2xl font-bold">{title}</h3>
-
-        <CustomDivider color={"light-black"} margin={"2"} />
-        {textNode}
-
-        <div className="blog-img-section">
-          <img
-            className="max-h-55 w-full object-cover rounded-lg mr-5"
-            src={img}
-          />
-          <div className="blog-badge-wrapper">
-            <CustomBadges badgeArray={badgeArray.slice(0, 4)} />
-          </div>
+  date?: string;
+}) => (
+  <div className="bg-primary-light p-4 rounded-md">
+    <div>
+      <h3 className="text-2xl font-bold">{title}</h3>
+      {date && (
+        <div className="mb-3">
+          <CalendarDate date={date} />
         </div>
-      </div>
-    </Card>
-  );
-};
+      )}
+
+      <img
+        className="max-h-55 w-full object-cover rounded-lg mr-5 mb-3"
+        src={image}
+      />
+
+      {textNode}
+
+      {badges && (
+        <div className="mt-3">
+          <CustomBadges badges={badges.slice(0, 4)} />
+        </div>
+      )}
+    </div>
+  </div>
+);
+
 export default BlogPageCard;

@@ -1,18 +1,16 @@
 import { useState } from "react";
-import type { BlogData } from "../types/custom";
+import type { Blog } from "../types/custom";
 import { CustomDivider } from "../components";
 import CustomBadges from "../components/customBadges";
 import { truncateText } from "../functions";
 import BlogPageCard from "./card";
 
-const DesktopCard = ({ data }: { data: BlogData[] }) => {
+const DesktopCard = ({ data }: { data: Blog[] }) => {
   console.log("data", data);
-  const [selectedCard, setSelectedCard] = useState<BlogData | undefined>(
-    data[0],
-  );
+  const [selectedCard, setSelectedCard] = useState<Blog | undefined>(data[0]);
   return (
     <div className="flex flex-row space-x-3 hidden md:flex">
-      <div className="md:w-1/2 lg:w-1/3 bg-light-black rounded-md mx-3 p-4 mb-5 space-y-3 shadow-[3px_3px_4px_4px_var(--color-dark-black)] max-h-230 overflow-y-auto">
+      <div className="desktop-blog-dropdown md:w-1/2 lg:w-1/3 bg-primary rounded-md mx-3 p-4 mb-5 space-y-3 shadow-[3px_3px_4px_4px_var(--color-dark-black)] max-h-230 overflow-y-auto">
         {data.map((item) => (
           <div
             onClick={() => {
@@ -22,11 +20,11 @@ const DesktopCard = ({ data }: { data: BlogData[] }) => {
           >
             <BlogPageCard
               title={item.title}
-              img={item.img}
-              badgeArray={item.badges}
+              image={item.image}
               textNode={
-                <p className="mb-2">{`${truncateText(item.text)}...`}</p>
+                <p className="mb-2">{`${truncateText(item.description)}...`}</p>
               }
+              date={item.date}
             />
           </div>
         ))}
@@ -40,11 +38,11 @@ const DesktopCard = ({ data }: { data: BlogData[] }) => {
           <div className="max-w-200">
             <img
               className="max-h-90 w-full object-cover rounded-lg mr-5 my-3"
-              src={selectedCard?.img || "/LinkedIn_logo.png"}
+              src={selectedCard?.image || "/LinkedIn_logo.png"}
             />
-            <p>{selectedCard?.text}</p>
+            <p>{selectedCard?.description}</p>
             <div className="my-3">
-              <CustomBadges badgeArray={selectedCard?.badgeArray || []} />
+              <CustomBadges badges={selectedCard?.badges || []} />
             </div>
           </div>
         </div>
